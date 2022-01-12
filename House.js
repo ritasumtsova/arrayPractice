@@ -1,5 +1,3 @@
-//    + deleteLampById(id: Number): void
-//       Array.prototype.filter()
 class House {
     #lamps;
 

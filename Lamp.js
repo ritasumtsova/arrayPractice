@@ -2,9 +2,9 @@ class Lamp {
     #id;
     #status;
 
-    constructor(id, status = false) {
+    constructor(id) {
         this.#id = id;
-        this.#status = status;
+        this.#status = false;
     }
 
     get id () {
