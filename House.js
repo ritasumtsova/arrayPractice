@@ -26,7 +26,8 @@ class House {
     }
 
     getLampByIdFilter (id) {
-        return this.#lamps.filter(lamp => lamp.id === id)[0] || null;
+        const [lamp = null] = this.#lamps.filter(lamp => lamp.id === id);
+        return lamp;
     }
 
     addLampPush (lamp) {
@@ -41,8 +42,12 @@ class House {
         this.#lamps = this.#lamps.filter(lamp => lamp.id !== id);
     }
 
-    deleteLampByIdFindIndexPlusSplice (id) {
-        this.#lamps.splice(this.#lamps.findIndex(lamp => lamp.id === id), 1);
+    deleteLampByIdFindPlusSplice (id) {
+        const neededLamp = this.#lamps.findIndex(lamp => lamp.id === id);
+        
+        if(neededLamp) {
+            this.#lamps.splice(neededLamp, 1);
+        }
     }
 
     get lampsId () {
@@ -50,7 +55,7 @@ class House {
     }
 
     isAllOn () {
-        return this.#lamps.every(lamp => lamp.status === true);
+        return this.#lamps.every(lamp => lamp.status);
     }
 }
 
